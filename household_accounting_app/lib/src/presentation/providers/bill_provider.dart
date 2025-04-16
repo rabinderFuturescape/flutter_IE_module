@@ -39,10 +39,11 @@ class BillProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> fetchBillsFromBBPS(
-      Vendor vendor, String customerId) async {
-    final fetchedBills =
-        await _billService.fetchBillsFromBBPS(vendor, customerId);
+  Future<void> fetchBillsFromBBPS(Vendor vendor, String customerId) async {
+    final fetchedBills = await _billService.fetchBillsFromBBPS(
+      vendor,
+      customerId,
+    );
     bills.addAll(fetchedBills);
     notifyListeners();
   }

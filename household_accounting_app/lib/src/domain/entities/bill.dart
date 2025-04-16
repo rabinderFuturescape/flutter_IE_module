@@ -1,10 +1,11 @@
 int? id;
-  int? vendorId;
-  double? amount;
-  DateTime? dueDate;
-  String? billNumber;
-  String? billPeriod;
-  bool? isPaid;
+int? vendorId;
+double? amount;
+DateTime? dueDate;
+String? billNumber;
+String? billPeriod;
+bool? isPaid;
+
 class Bill {
   final int id;
   final int vendorId;

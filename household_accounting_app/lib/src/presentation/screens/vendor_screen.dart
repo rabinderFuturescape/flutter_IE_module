@@ -25,9 +25,7 @@ class _VendorScreenState extends State<VendorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Utility Bills Vendors'),
-      ),
+      appBar: AppBar(title: const Text('Utility Bills Vendors')),
       body: Consumer2<VendorProvider, BillProvider>(
         builder: (context, vendorProvider, billProvider, child) {
           if (vendorProvider.vendors.isEmpty) {
@@ -37,9 +35,10 @@ class _VendorScreenState extends State<VendorScreen> {
             itemCount: vendorProvider.vendors.length,
             itemBuilder: (context, index) {
               final Vendor vendor = vendorProvider.vendors[index];
-              final List<Bill> vendorBills = billProvider.bills
-                  .where((bill) => bill.vendorId == vendor.id)
-                  .toList();
+              final List<Bill> vendorBills =
+                  billProvider.bills
+                      .where((bill) => bill.vendorId == vendor.id)
+                      .toList();
 
               return ExpansionTile(
                 title: Text(vendor.name),
@@ -58,8 +57,7 @@ class _VendorScreenState extends State<VendorScreen> {
                         final Bill bill = vendorBills[billIndex];
                         return ListTile(
                           title: Text('Amount: ${bill.amount}'),
-                          subtitle:
-                              Text('Due Date: ${bill.dueDate.toLocal()}'),
+                          subtitle: Text('Due Date: ${bill.dueDate.toLocal()}'),
                         );
                       },
                     ),

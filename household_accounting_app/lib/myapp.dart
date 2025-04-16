@@ -54,15 +54,12 @@ void main() async {
   final billRepository = BillRepositoryImpl();
   final billService = BillService(billRepository);
 
-  
-
   // --- Run App with Providers ---
   runApp(
     MultiProvider(
       providers: [
         // Provide the services/use cases if needed directly (less common)
         // Provider<AccountingService>.value(value: accountingService),
-        
 
         // Provide ChangeNotifiers (ViewModels) that use the services
         ChangeNotifierProvider<AccountingProvider>(
@@ -78,14 +75,13 @@ void main() async {
         // ChangeNotifierProvider<SubscriptionProvider>(
         //   create: (_) => SubscriptionProvider(subscriptionService)..fetchDeliveries(),
         // ),
-         ChangeNotifierProvider<VendorProvider>(
+        ChangeNotifierProvider<VendorProvider>(
           create: (_) => VendorProvider(vendorService)..loadVendors(),
         ),
         ChangeNotifierProvider<BillProvider>(
           create: (_) => BillProvider(billService)..loadBills(),
         ),
-
-      ], 
+      ],
       child: const MyApp(),
     ),
   );
@@ -106,25 +102,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/voucher_entry': (context) => VoucherEntryForm(),
         '/vendors': (context) => VendorScreen(),
-
       },
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
