@@ -1,0 +1,137 @@
+name: household_accounting_app
+description: A household accounting application.
+
+# Prevent accidental publishing to pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  # Ensure this SDK constraint is compatible with your Flutter version
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Core Flutter Icons
+  cupertino_icons: ^1.0.2 # Use the latest compatible version
+
+  # State Management
+  provider: ^6.0.5 # Use the latest compatible version
+
+  # Local Persistence (SQLite)
+  sqflite: ^2.3.0 # Use the latest compatible version
+  path_provider: ^2.1.1 # Use the latest compatible version
+  path: ^1.8.3 # Use the latest compatible version
+
+  # Utilities
+  uuid: ^4.2.1 # Use the latest compatible version
+  intl: ^0.18.1 # Use the latest compatible version
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Linter
+  flutter_lints: ^2.0.0 # Or a newer version like ^3.0.0 or ^4.0.0 if compatible
+
+# Flutter specific configurations
+flutter:
+  uses-material-design: true
+
+  # Define assets (e.g., images) used by the application
+  assets:
+     - assets/images/ # Make sure this directory exists
+
+  # Define custom fonts used by the application
+  # Ensure thes  e
+e font files exist in the specified paths
+  fonts:
+    - family: YourFontFamily # Replace with your actual font family name
+      fonts:
+        - asset: assets/fonts/YourFont.ttf # Replace with your actual font file path
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  errors:
+    todo: ignore
+    invalid_annotation_target: ignore
+    missing_return: error
+    dead_code: error
+    unused_local_variable: error
+    unused_import: error
+    unused_element: error
+    unnecessary_null_comparison: error
+    unnecessary_statements: error
+    unnecessary_string_interpolations: error
+    unnecessary_this: error
+    unreachable_from_main: error
+    must_be_immutable: error
+    always_declare_return_types: error
+    always_put_required_named_parameters_first: error
+    avoid_function_literals_in_foreach_calls: error
+    avoid_print: error
+    avoid_returning_null_for_future: error
+    avoid_types_on_closure_parameters: error
+    cancel_subscriptions: error
+    close_sinks: error
+    directives_ordering: error
+    empty_catches: error
+    empty_constructor_bodies: error
+    library_names: error
+    library_prefixes: error
+    non_constant_identifier_names: error
+    omit_local_variable_types: error
+    one_member_abstracts: error
+    package_api_docs: error
+    prefer_adjacent_string_concatenation: error
+    prefer_collection_literals: error
+    prefer_conditional_assignment: error
+    prefer_const_constructors: error
+    prefer_const_constructors_in_immutables: error
+    prefer_const_declarations: error
+    prefer_const_literals_to_create_immutables: error
+    prefer_contains: error
+    prefer_equal_for_default_values: error
+    prefer_final_fields: error
+    prefer_final_in_for_each: error
+    prefer_final_locals: error
+    prefer_foreach: error
+    prefer_function_declarations_over_variables: error
+    prefer_generic_function_type_aliases: error
+    prefer_if_null_operators: error
+    prefer_initializing_formals: error
+    prefer_interpolation_to_compose_strings: error
+    prefer_is_empty: error
+    prefer_is_not_empty: error
+    prefer_iterable_whereType: error
+    prefer_null_aware_operators: error
+    prefer_relative_imports: error
+    prefer_single_quotes: error
+    prefer_spread_collections: error
+    sort_constructors_first: error
+    sort_pub_dependencies: error
+    type_annotate_public_apis: error
+    unnecessary_brace_in_string_interps: error
+    unnecessary_const: error
+    unnecessary_new: error
+    unnecessary_null_aware_assignments: error
+    unnecessary_overrides: error
+    unnecessary_parenthesis: error
+    unnecessary_raw_strings: error
+    unnecessary_string_escapes: error
+    unnecessary_string_interpolations: error
+    use_build_context_synchronously: error
+    use_function_type_syntax_for_parameters: error
+    use_rethrow_when_possible: error
+    use_setters_to_change_properties: error
+    use_string_buffers: error
+    use_super_parameters: error

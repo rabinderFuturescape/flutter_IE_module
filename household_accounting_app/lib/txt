@@ -1,0 +1,54 @@
+lib/
+├── main.dart                 # App entry point
+└── src/
+    ├── core/                 # Core utilities, constants, error handling
+    │   ├── errors/
+    │   │   └── exceptions.dart
+    │   ├── usecase/
+    │   │   └── usecase.dart    # Optional base class for use cases
+    │   └── utils/
+    │       └── db_constants.dart # Database table/column names
+    ├── data/                 # Data Layer
+    │   ├── datasources/
+    │   │   └── local/
+    │   │       └── sqlite_database_helper.dart # DB connection & raw queries
+    │   ├── models/           # Data Transfer Objects (if different from domain) - Can often reuse domain models
+    │   └── repositories/     # Concrete repository implementations
+    │       ├── accounting_repository_impl.dart
+    │       ├── reimbursement_repository_impl.dart
+    │       └── subscription_repository_impl.dart
+    ├── domain/               # Domain Layer
+    │   ├── entities/         # Core business objects (Your models go here)
+    │   │   ├── account/
+    │   │   │   ├── entry_type.dart
+    │   │   │   ├── journal_entry.dart
+    │   │   │   ├── journal_line.dart
+    │   │   │   └── ledger.dart
+    │   │   └── household/
+    │   │       ├── advance.dart
+    │   │       ├── bill_detail.dart
+    │   │       ├── reimbursement.dart
+    │   │       └── subscription_delivery.dart
+    │   ├── repositories/     # Abstract repository interfaces
+    │   │   ├── i_accounting_repository.dart
+    │   │   ├── i_reimbursement_repository.dart
+    │   │   └── i_subscription_repository.dart
+    │   └── usecases/         # Business logic services (Your services go here)
+    │       ├── accounting_service.dart
+    │       ├── reimbursement_service.dart
+    │       └── subscription_service.dart
+    └── presentation/         # Presentation Layer
+        ├── providers/        # State management (ChangeNotifiers)
+        │   ├── accounting_provider.dart
+        │   ├── dashboard_provider.dart
+        │   ├── reimbursement_provider.dart
+        │   └── subscription_provider.dart
+        ├── screens/          # UI Screens
+        │   ├── dashboard_screen.dart
+        │   ├── journal_entry_add_screen.dart
+        │   ├── reimbursement_add_screen.dart
+        │   └── subscription_list_screen.dart
+        └── widgets/          # Reusable UI components
+            └── common/
+                └── loading_indicator.dart
+                └── error_display.dart
