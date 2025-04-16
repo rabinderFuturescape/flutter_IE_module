@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:uuid/uuid.dart'; // Import Uuid
+import 'package:household_accounting_app/voucher_entry_form.dart';
 
 import 'src/data/datasources/local/sqlite_database_helper.dart';
 import 'src/data/repositories/accounting_repository_impl.dart';
@@ -47,6 +47,7 @@ void main() async {
       providers: [
         // Provide the services/use cases if needed directly (less common)
         // Provider<AccountingService>.value(value: accountingService),
+        
 
         // Provide ChangeNotifiers (ViewModels) that use the services
         ChangeNotifierProvider<AccountingProvider>(
@@ -62,7 +63,7 @@ void main() async {
         // ChangeNotifierProvider<SubscriptionProvider>(
         //   create: (_) => SubscriptionProvider(subscriptionService)..fetchDeliveries(),
         // ),
-      ],
+      ], 
       child: const MyApp(),
     ),
   );
@@ -79,12 +80,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const DashboardScreen(), // Start with the dashboard
-      // Define routes for navigation if needed
-      // routes: {
-      //   '/add_journal': (context) => const JournalEntryAddScreen(),
-      //   '/add_reimbursement': (context) => const ReimbursementAddScreen(),
-      // },
+      home: const DashboardScreen(),
+      routes: {
+        '/voucher_entry': (context) => VoucherEntryForm(),
+      },
     );
   }
 }
