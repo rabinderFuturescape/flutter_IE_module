@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:household_accounting_app/voucher_entry_form.dart';
+import 'package:household_accounting_app/src/data/repositories/bill_repository_impl.dart';
+import 'package:household_accounting_app/src/data/repositories/vendor_repository_impl.dart';
+import 'package:household_accounting_app/src/domain/usecases/bill_service.dart';
+import 'package:household_accounting_app/src/domain/usecases/vendor_service.dart';
 
 import 'src/data/datasources/local/sqlite_database_helper.dart';
 import 'src/data/repositories/accounting_repository_impl.dart';
-import 'src/data/repositories/reimbursement_repository_impl.dart'; // Create these
-import 'src/data/repositories/subscription_repository_impl.dart'; // Create these
+import 'src/presentation/providers/vendor_provider.dart';
+import 'src/presentation/providers/bill_provider.dart';
 import 'src/domain/repositories/i_accounting_repository.dart';
-import 'src/domain/repositories/i_reimbursement_repository.dart'; // Create these
-import 'src/domain/repositories/i_subscription_repository.dart'; // Create these
+import 'src/presentation/screens/vendor_screen.dart';
 import 'src/domain/usecases/accounting_service.dart';
+import 'src/presentation/screens/dashboard_screen.dart';
+// import 'src/data/repositories/reimbursement_repository_impl.dart'; // Create these
+// import 'src/data/repositories/subscription_repository_impl.dart'; // Create these
 import 'src/domain/usecases/reimbursement_service.dart'; // Create these
 import 'src/domain/usecases/subscription_service.dart'; // Create these
 import 'src/presentation/providers/accounting_provider.dart';
@@ -41,6 +47,15 @@ void main() async {
   // final reimbursementService = ReimbursementService(reimbursementRepository);
   // final subscriptionService = SubscriptionService(subscriptionRepository);
 
+  // -- Vendor and Bill Injection --
+  final vendorRepository = VendorRepositoryImpl();
+  final vendorService = VendorService(vendorRepository);
+
+  final billRepository = BillRepositoryImpl();
+  final billService = BillService(billRepository);
+
+  
+
   // --- Run App with Providers ---
   runApp(
     MultiProvider(
@@ -63,6 +78,13 @@ void main() async {
         // ChangeNotifierProvider<SubscriptionProvider>(
         //   create: (_) => SubscriptionProvider(subscriptionService)..fetchDeliveries(),
         // ),
+         ChangeNotifierProvider<VendorProvider>(
+          create: (_) => VendorProvider(vendorService)..loadVendors(),
+        ),
+        ChangeNotifierProvider<BillProvider>(
+          create: (_) => BillProvider(billService)..loadBills(),
+        ),
+
       ], 
       child: const MyApp(),
     ),
@@ -83,7 +105,26 @@ class MyApp extends StatelessWidget {
       home: const DashboardScreen(),
       routes: {
         '/voucher_entry': (context) => VoucherEntryForm(),
+        '/vendors': (context) => VendorScreen(),
+
       },
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
